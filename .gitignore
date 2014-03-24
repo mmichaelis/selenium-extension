@@ -10,6 +10,21 @@
 *~
 *.bak
 
+# Maven #
+target/
+overlays/
+*.releaseBackup
+
+# Logs #
+
+*.log
+*.err
+*.out
+
+# Git #
+
+*.orig
+
 # Idea Ignores #
 # for reference see: https://intellij-support.jetbrains.com/entries/23393067
 
