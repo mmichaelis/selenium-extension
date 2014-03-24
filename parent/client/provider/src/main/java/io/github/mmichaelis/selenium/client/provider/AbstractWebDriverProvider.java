@@ -1,11 +1,6 @@
 package io.github.mmichaelis.selenium.client.provider;
 
-import io.github.mmichaelis.selenium.client.provider.internal.ClearStorageAction;
-import io.github.mmichaelis.selenium.client.provider.internal.CloseOtherWindowsAction;
-import io.github.mmichaelis.selenium.client.provider.internal.QuitWebDriverRunnable;
-import io.github.mmichaelis.selenium.client.provider.internal.SilentAugmenter;
-import io.github.mmichaelis.selenium.client.provider.internal.WebDriverInformation;
-import io.github.mmichaelis.selenium.client.provider.internal.WebDriverInformationImpl;
+import io.github.mmichaelis.selenium.client.provider.internal.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.slf4j.Logger;

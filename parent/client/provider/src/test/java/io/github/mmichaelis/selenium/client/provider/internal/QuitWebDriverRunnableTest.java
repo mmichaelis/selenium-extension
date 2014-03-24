@@ -12,9 +12,7 @@ import static org.apache.commons.lang3.RandomStringUtils.random;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Tests {@link io.github.mmichaelis.selenium.client.provider.internal.QuitWebDriverRunnable}.

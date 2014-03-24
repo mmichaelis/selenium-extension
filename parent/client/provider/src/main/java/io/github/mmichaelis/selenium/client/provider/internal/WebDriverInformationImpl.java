@@ -62,9 +62,9 @@ public final class WebDriverInformationImpl implements WebDriverInformation {
   @Override
   public String toString() {
     return Objects.toStringHelper(this)
-                  .add(P_DRIVER, driver)
-                  .add(P_SHUTDOWN_HOOK, shutdownHook)
-                  .add(P_INITIAL_URL, initialUrl)
-                  .toString();
+            .add(P_DRIVER, driver)
+            .add(P_SHUTDOWN_HOOK, shutdownHook)
+            .add(P_INITIAL_URL, initialUrl)
+            .toString();
   }
 }
