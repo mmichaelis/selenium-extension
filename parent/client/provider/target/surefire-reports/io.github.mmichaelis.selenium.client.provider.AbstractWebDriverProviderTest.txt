@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.github.mmichaelis.selenium.client.provider.AbstractWebDriverProviderTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.908 sec
