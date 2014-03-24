@@ -1,5 +1,6 @@
 package io.github.mmichaelis.selenium.client.annotation;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nullable;
 
 /**
@@ -27,6 +28,7 @@ public interface ValueParser<T> {
   //
   // To skip the discussion here, "value" is not annotated at all - stating that (at this point) it is unknown if
   // implementations will accept null values or not.
+  @CheckReturnValue
   T parse(String value);
 
   /**
@@ -37,5 +39,6 @@ public interface ValueParser<T> {
    * @param value the value to parse
    * @return {@code true} if this parser could convert the given String, {@code false} otherwise
    */
+  @CheckReturnValue
   boolean canParse(@Nullable String value);
 }
