@@ -2,7 +2,6 @@ package io.github.mmichaelis.selenium.client.annotation.impl;
 
 import com.google.common.base.Function;
 import io.github.mmichaelis.selenium.client.annotation.ValueParser;
-import org.jetbrains.annotations.Contract;
 import org.openqa.selenium.Platform;
 
 import javax.annotation.CheckReturnValue;
@@ -39,7 +38,6 @@ public final class PlatformValueParser implements ValueParser<Platform> {
    * @throws NullPointerException     if value is null
    * @throws IllegalArgumentException if platform is unknown
    */
-  @Contract("null -> fail; !null -> !null")
   @Nullable
   @CheckReturnValue
   @Override
@@ -58,7 +56,6 @@ public final class PlatformValueParser implements ValueParser<Platform> {
    * @param value the value to parse
    * @return {@code true} if value can be parsed; {@code false} otherwise
    */
-  @Contract("null -> false; _ -> _")
   @CheckReturnValue
   @Override
   public boolean canParse(@Nullable final String value) {
@@ -69,7 +66,6 @@ public final class PlatformValueParser implements ValueParser<Platform> {
    * Converts platforms to (lower cased) String representations.
    */
   private static class PlatformToStringFunction implements Function<Platform, String> {
-    @Contract("null -> null; _ -> !null")
     @Nullable
     @CheckReturnValue
     @Override

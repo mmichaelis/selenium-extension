@@ -2,7 +2,6 @@ package io.github.mmichaelis.selenium.client.annotation.impl;
 
 import io.github.mmichaelis.selenium.client.annotation.ValueParser;
 import io.github.mmichaelis.selenium.client.annotation.ValueParserException;
-import org.jetbrains.annotations.Contract;
 
 import javax.annotation.CheckReturnValue;
 import javax.annotation.Nullable;
@@ -57,7 +56,6 @@ public final class DefaultValueParser implements ValueParser<Object> {
    * @param value the value to parse
    * @return always true
    */
-  @Contract("_ -> true")
   @CheckReturnValue
   @Override
   public boolean canParse(@Nullable final String value) {

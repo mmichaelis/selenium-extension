@@ -2,7 +2,6 @@ package io.github.mmichaelis.selenium.client.annotation.impl;
 
 import io.github.mmichaelis.selenium.client.annotation.ValueParser;
 import io.github.mmichaelis.selenium.common.internal.PreconditionMessage;
-import org.jetbrains.annotations.Contract;
 
 import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
@@ -34,7 +33,6 @@ public final class BooleanValueParser implements ValueParser<Boolean> {
    * @return either {@code true} or {@code false} depending on the given String value
    * @throws java.lang.NullPointerException if {@code null} is passed as value
    */
-  @Contract("null -> fail; !null -> !null")
   @Nonnull
   @CheckReturnValue
   @Override
@@ -43,7 +41,6 @@ public final class BooleanValueParser implements ValueParser<Boolean> {
     return parseBoolean(value);
   }
 
-  @Contract("null -> false; !null -> _")
   @CheckReturnValue
   @Override
   public boolean canParse(@Nullable final String value) {

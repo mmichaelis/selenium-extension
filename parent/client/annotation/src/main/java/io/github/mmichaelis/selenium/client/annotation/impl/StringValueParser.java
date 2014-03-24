@@ -1,7 +1,6 @@
 package io.github.mmichaelis.selenium.client.annotation.impl;
 
 import io.github.mmichaelis.selenium.client.annotation.ValueParser;
-import org.jetbrains.annotations.Contract;
 
 import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
@@ -24,7 +23,6 @@ public final class StringValueParser implements ValueParser<String> {
    * @param value value to parse; {@code null} will be returned as is (as well as anything else parsed as argument)
    * @return value (as is)
    */
-  @Contract("null -> null; !null -> !null")
   @Nullable
   @CheckReturnValue
   @Override
@@ -38,7 +36,6 @@ public final class StringValueParser implements ValueParser<String> {
    * @param value the value to parse
    * @return always true
    */
-  @Contract("_ -> true")
   @CheckReturnValue
   @Override
   public boolean canParse(@Nullable final String value) {
