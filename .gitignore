@@ -17,5 +17,9 @@
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
+# No, we don't have a UI (yet):
+.idea/uiDesigner.xml
 # Maven Project, generated automatically:
 .idea/libraries
+# Removed in order to prevent name conflicts (username will be used to store dictionaries):
+.idea/dictionaries
