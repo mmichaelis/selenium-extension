@@ -17,10 +17,16 @@ public interface ValueParser<T> {
    * @param value value to parse; some parsers might accept {@code null} values, other might fail with exceptions
    * @return the result of parsing the given string; might be {@code null} bust most of the time will be
    * {@code non-null}.
-   * @throws java.lang.NullPointerException                                       if parser cannot deal with provided
-   *                                                                              {@code null} value
-   * @throws io.github.mmichaelis.selenium.client.annotation.ValueParserException if parsing fails for any other reason
+   * @throws java.lang.NullPointerException if parser cannot deal with provided
+   *                                        {@code null} value
+   * @throws ValueParserException           if parsing fails for any other reason
    */
+  // DevNote: There is some discussion if interfaces should define JSR305 annotations (here: Nullable) for parameters
+  // if implementations might decide not to support null values (thus annotate with Nonnull). Findbugs will accept this
+  // and call it "best practice" - while Idea Inspections will report a problem.
+  //
+  // To skip the discussion here, "value" is not annotated at all - stating that (at this point) it is unknown if
+  // implementations will accept null values or not.
   T parse(String value);
 
   /**
