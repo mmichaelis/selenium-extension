@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="selenium-extension-client-annotation" />
+        <module name="selenium-extension-client-junit" />
+        <module name="selenium-extension-client-provider" />
+        <module name="selenium-extension-common" />
+        <module name="selenium-extension-server-inmemory" />
+        <module name="selenium-extension-server-junit" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="selenium-extension" target="1.7" />
+      <module name="selenium-extension-client" target="1.7" />
+      <module name="selenium-extension-client-annotation" target="1.7" />
+      <module name="selenium-extension-client-junit" target="1.7" />
+      <module name="selenium-extension-client-provider" target="1.7" />
+      <module name="selenium-extension-common" target="1.7" />
+      <module name="selenium-extension-parent" target="1.7" />
+      <module name="selenium-extension-server" target="1.7" />
+      <module name="selenium-extension-server-inmemory" target="1.7" />
+      <module name="selenium-extension-server-junit" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
+

@@ -4,3 +4,18 @@
 *.jar
 *.war
 *.ear
+
+# Backup Files #
+
+*~
+*.bak
+
+# Idea Ignores #
+# for reference see: https://intellij-support.jetbrains.com/entries/23393067
+
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+# Maven Project, generated automatically:
+.idea/libraries
