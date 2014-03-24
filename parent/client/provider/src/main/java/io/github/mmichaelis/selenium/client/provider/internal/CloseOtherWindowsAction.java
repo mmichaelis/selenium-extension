@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Action;
 import javax.annotation.Nonnull;
 import java.util.Set;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Objects.requireNonNull;
 
 /**
  * @since 2014-03-22.
@@ -16,7 +16,7 @@ public final class CloseOtherWindowsAction implements Action {
   private final WebDriver driver;
 
   public CloseOtherWindowsAction(@Nonnull final WebDriver driver) {
-    checkNotNull(driver, PreconditionMessage.MUST_NOT_BE_NULL.format("driver"));
+    requireNonNull(driver, PreconditionMessage.MUST_NOT_BE_NULL.format("driver"));
     this.driver = driver;
   }
 

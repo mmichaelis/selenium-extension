@@ -9,8 +9,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import javax.annotation.Nonnull;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.github.mmichaelis.selenium.common.internal.PreconditionMessage.MUST_NOT_BE_NULL;
+import static java.util.Objects.requireNonNull;
 
 /**
  * @since 2014-03-21.
@@ -25,8 +25,8 @@ public class WebDriverProviderRule implements TestRule {
 
   @Override
   public Statement apply(@Nonnull final Statement base, @Nonnull final Description description) {
-    checkNotNull(base, MUST_NOT_BE_NULL.format("base"));
-    checkNotNull(description, MUST_NOT_BE_NULL.format("description"));
+    requireNonNull(base, MUST_NOT_BE_NULL.format("base"));
+    requireNonNull(description, MUST_NOT_BE_NULL.format("description"));
     return new Statement() {
       @Override
       public void evaluate() throws Throwable {

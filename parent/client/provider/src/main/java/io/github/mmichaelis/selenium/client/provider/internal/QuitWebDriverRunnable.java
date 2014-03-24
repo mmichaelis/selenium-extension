@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import javax.annotation.Nonnull;
 
 import static com.google.common.base.Objects.toStringHelper;
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.github.mmichaelis.selenium.common.internal.PreconditionMessage.MUST_NOT_BE_NULL;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Runnable which will end the given WebDriver instance. Typically to be used as shutdown hook
@@ -26,7 +26,7 @@ public final class QuitWebDriverRunnable implements Runnable {
    * @throws java.lang.NullPointerException if driver is {@code null}
    */
   public QuitWebDriverRunnable(@Nonnull final WebDriver driver) {
-    checkNotNull(driver, MUST_NOT_BE_NULL.format(P_DRIVER));
+    requireNonNull(driver, MUST_NOT_BE_NULL.format(P_DRIVER));
     this.driver = driver;
   }
 

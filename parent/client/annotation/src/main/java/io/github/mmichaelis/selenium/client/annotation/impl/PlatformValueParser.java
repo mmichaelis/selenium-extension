@@ -1,5 +1,6 @@
 package io.github.mmichaelis.selenium.client.annotation.impl;
 
+import com.google.common.base.Function;
 import io.github.mmichaelis.selenium.client.annotation.ValueParser;
 import org.openqa.selenium.Platform;
 
@@ -7,10 +8,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Collection;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.collect.Collections2.transform;
 import static java.util.Arrays.asList;
 import static java.util.Locale.ROOT;
+import static java.util.Objects.requireNonNull;
 import static org.openqa.selenium.Platform.valueOf;
 
 /**
@@ -23,7 +24,7 @@ public class PlatformValueParser implements ValueParser<Platform> {
   @Nullable
   @Override
   public Platform parse(@Nonnull final String value) {
-    checkNotNull(value, "Platform value must not be null.");
+    requireNonNull(value, "Platform value must not be null.");
     return valueOf(value.toUpperCase(ROOT));
   }
 
@@ -32,7 +33,7 @@ public class PlatformValueParser implements ValueParser<Platform> {
     return SUPPORTED_PLATFORMS.contains(value);
   }
 
-  private static class PlatformToStringFunction implements com.google.common.base.Function<Platform, String> {
+  private static class PlatformToStringFunction implements Function<Platform, String> {
     @Nullable
     @Override
     public String apply(@Nullable final Platform input) {

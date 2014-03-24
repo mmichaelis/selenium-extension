@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Objects.requireNonNull;
 
 /**
  * @since 2014-03-22.
@@ -23,7 +23,7 @@ public final class ClearStorageAction implements Action {
   private final WebDriver driver;
 
   public ClearStorageAction(@Nonnull final WebDriver driver) {
-    checkNotNull(driver, PreconditionMessage.MUST_NOT_BE_NULL.format("driver"));
+    requireNonNull(driver, PreconditionMessage.MUST_NOT_BE_NULL.format("driver"));
     this.driver = driver;
   }
 

@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 import javax.annotation.Nonnull;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.github.mmichaelis.selenium.common.internal.PreconditionMessage.MUST_NOT_BE_NULL;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Holds information on a started WebDriver instance. Information are required for example to remove
@@ -35,8 +35,8 @@ public final class WebDriverInformationImpl implements WebDriverInformation {
    * @throws java.lang.NullPointerException if any of the parameters is {@code null}
    */
   public WebDriverInformationImpl(@Nonnull final WebDriver driver, @Nonnull final Thread shutdownHook) {
-    checkNotNull(driver, MUST_NOT_BE_NULL.format(P_DRIVER));
-    checkNotNull(shutdownHook, MUST_NOT_BE_NULL.format(P_SHUTDOWN_HOOK));
+    requireNonNull(driver, MUST_NOT_BE_NULL.format(P_DRIVER));
+    requireNonNull(shutdownHook, MUST_NOT_BE_NULL.format(P_SHUTDOWN_HOOK));
     this.driver = driver;
     initialUrl = driver.getCurrentUrl();
     this.shutdownHook = shutdownHook;

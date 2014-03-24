@@ -164,7 +164,7 @@ public class AbstractWebDriverProviderTest {
     final URL otherPageUrl = Resources.getResource(this.getClass(), "page2.html");
     final URL newPageUrl = Resources.getResource(this.getClass(), "page3.html");
     final WebDriverProvider driverProvider = new NoExceptionWebDriverProvider(testedDriver);
-    final ExecutorService executorService = Executors.newCachedThreadPool();
+    final ExecutorService executorService = newCachedThreadPool();
     final Future<Void> openWindowResultFuture = executorService.submit(new Callable<Void>() {
       @Nullable
       @Override
