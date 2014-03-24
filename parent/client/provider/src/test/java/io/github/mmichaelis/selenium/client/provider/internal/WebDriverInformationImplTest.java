@@ -34,9 +34,9 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class WebDriverInformationImplTest {
+  private final Thread someThread = new Thread(random(10));
   @Mock
   private WebDriver driver;
-  private final Thread someThread = new Thread(random(10));
 
   @Test
   public void store_webdriver_instance_directly() throws Exception {

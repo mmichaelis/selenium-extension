@@ -44,6 +44,18 @@ public final class PlatformValueParser implements ValueParser<Platform> {
           transform(asList(Platform.values()), new PlatformToStringFunction());
 
   /**
+   * Ensures that platform string values are stored and compared in the same case.
+   *
+   * @param value Platform string value to unify
+   * @return unified (regarding case) of platform name
+   */
+  @Nonnull
+  @CheckReturnValue
+  private static String unifyPlatformCase(@Nonnull final String value) {
+    return value.toLowerCase(Locale.ROOT);
+  }
+
+  /**
    * <p>
    * Parses a given String to a Platform. The Platform String will be converted to upper case and
    * must match the list of supported platforms in {@link Platform}.
@@ -88,18 +100,6 @@ public final class PlatformValueParser implements ValueParser<Platform> {
     public String apply(@Nullable final Platform input) {
       return input == null ? null : unifyPlatformCase(input.toString());
     }
-  }
-
-  /**
-   * Ensures that platform string values are stored and compared in the same case.
-   *
-   * @param value Platform string value to unify
-   * @return unified (regarding case) of platform name
-   */
-  @Nonnull
-  @CheckReturnValue
-  private static String unifyPlatformCase(@Nonnull final String value) {
-    return value.toLowerCase(Locale.ROOT);
   }
 
 }

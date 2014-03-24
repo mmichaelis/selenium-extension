@@ -36,6 +36,11 @@ public final class ValueParserTestData {
     this.canParseResult = canParseResult;
   }
 
+  @SuppressWarnings("BooleanParameter")
+  public static ValueParserTestData data(final String description, final String toParse, final Object parseResult, final boolean canParseResult) {
+    return new ValueParserTestData(description, toParse, parseResult, canParseResult);
+  }
+
   public String getToParse() {
     return toParse;
   }
@@ -56,10 +61,5 @@ public final class ValueParserTestData {
             .add("parseResult", parseResult)
             .add("canParseResult", canParseResult)
             .toString();
-  }
-
-  @SuppressWarnings("BooleanParameter")
-  public static ValueParserTestData data(final String description, final String toParse, final Object parseResult, final boolean canParseResult) {
-    return new ValueParserTestData(description, toParse, parseResult, canParseResult);
   }
 }
