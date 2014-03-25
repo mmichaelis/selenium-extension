@@ -16,6 +16,8 @@
 
 package io.github.mmichaelis.selenium.client.annotation;
 
+import org.openqa.selenium.Platform;
+
 import java.lang.annotation.*;
 
 /**
@@ -25,9 +27,11 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target(ElementType.ANNOTATION_TYPE)
 public @interface Browser {
-  Capability[] included() default {};
+  String value();
 
-  Capability[] excluded() default {};
+  String version() default "";
+
+  Platform platform() default Platform.ANY;
 }

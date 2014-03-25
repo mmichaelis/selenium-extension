@@ -16,21 +16,18 @@
 
 package io.github.mmichaelis.selenium.client.annotation;
 
-import io.github.mmichaelis.selenium.client.annotation.impl.DefaultValueParser;
-
 import java.lang.annotation.*;
 
 /**
- * @since 2014-03-19.
+ * @see <a href="https://code.google.com/p/selenium/wiki/DesiredCapabilities">DesiredCapabilities Specification</a>
+ * @since 2014-03-19
  */
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.ANNOTATION_TYPE)
-public @interface Capability {
-  String[] key();
+@Target({ElementType.METHOD, ElementType.TYPE})
+public @interface BrowserInclude {
+  Browser[] value();
 
-  String[] value();
-
-  Class<? extends ValueParser> valueParser() default DefaultValueParser.class;
+  String message() default "";
 }
