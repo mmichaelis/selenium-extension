@@ -23,11 +23,8 @@ import java.lang.annotation.*;
  * @since 2014-03-19
  */
 @Documented
-@Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.TYPE})
 public @interface BrowserInclude {
   Browser[] value();
-
-  String message() default "";
 }

@@ -25,7 +25,6 @@ import java.lang.annotation.*;
  * @since 2014-03-19
  */
 @Documented
-@Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface Browser {
@@ -34,4 +33,6 @@ public @interface Browser {
   String version() default "";
 
   Platform platform() default Platform.ANY;
+
+  String message() default "";
 }
