@@ -27,7 +27,11 @@
 
   <artifactId>selenium-extension-client-annotation</artifactId>
   <name>client-annotation</name>
+  <description><![CDATA[
 
+    Annotations to control tests based on Selenium WebDriver.
+
+  ]]></description>
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
