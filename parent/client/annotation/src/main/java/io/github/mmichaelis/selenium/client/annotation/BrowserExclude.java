@@ -19,12 +19,19 @@ package io.github.mmichaelis.selenium.client.annotation;
 import java.lang.annotation.*;
 
 /**
- * @see <a href="https://code.google.com/p/selenium/wiki/DesiredCapabilities">DesiredCapabilities Specification</a>
+ * Marks tests (and test classes) which must not run on the specified browsers. Tests will be marked as
+ * ignored if a browser is excluded.
+ *
  * @since 2014-03-19
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.TYPE})
 public @interface BrowserExclude {
+  /**
+   * Browsers to exclude. Any match will cause the test to be ignored for the current browser.
+   *
+   * @return browsers to exclude
+   */
   Browser[] value();
 }
