@@ -17,11 +17,16 @@
 package io.github.mmichaelis.selenium.client.provider.internal;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.remote.UnreachableBrowserException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 
 import static com.google.common.base.Objects.toStringHelper;
 import static io.github.mmichaelis.selenium.common.internal.PreconditionMessage.MUST_NOT_BE_NULL;
+import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -31,6 +36,7 @@ import static java.util.Objects.requireNonNull;
  * @since 2014-03-21.
  */
 public final class QuitWebDriverRunnable implements Runnable {
+  private static final Logger LOG = LoggerFactory.getLogger(QuitWebDriverRunnable.class);
   private static final String P_DRIVER = "driver";
   @Nonnull
   private final WebDriver driver;
@@ -51,7 +57,13 @@ public final class QuitWebDriverRunnable implements Runnable {
    */
   @Override
   public void run() {
-    driver.quit();
+    try {
+      driver.quit();
+    } catch (final UnreachableBrowserException e) {
+      LOG.debug(format("Caught exception while closing WebDriver instance: %s. Assuming that there is no need to close.", driver), e);
+    } catch (final WebDriverException e) {
+      LOG.warn(format("Ignoring caught exception while closing WebDriver instance: %s", driver), e);
+    }
   }
 
   @Override
