@@ -18,6 +18,7 @@ package io.github.mmichaelis.selenium.client.provider;
 
 import org.openqa.selenium.WebDriver;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 
 /**
@@ -46,6 +47,7 @@ public interface WebDriverProvider {
    *
    * @return {@code true} if browser is started, {@code false} if not
    */
+  @CheckReturnValue
   boolean isStarted();
 
   /**
