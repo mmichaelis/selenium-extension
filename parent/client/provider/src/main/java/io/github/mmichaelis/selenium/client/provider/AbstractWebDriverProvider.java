@@ -22,15 +22,25 @@ import org.openqa.selenium.remote.Augmenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 
 import static java.lang.Runtime.getRuntime;
 
 /**
+ * <p>
+ * Abstract provider for WebDriver instances. WebDriver instances will be available per Thread thus can
+ * easily be shared among different wrappers like PageObjects etc. required for one test run.
+ * </p>
+ * <p>
+ * All WebDriver instances are automatically registered to quit on shutdown thus you are not required
+ * to call {@link #quit()} by yourself.
+ * </p>
+ *
  * @since 2014-03-21.
  */
 public abstract class AbstractWebDriverProvider implements WebDriverProvider {
-  private static final Logger LOG = LoggerFactory.getLogger(RemoteWebDriverProvider.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AbstractWebDriverProvider.class);
 
   private static final String SHUTDOWN_GROUP_NAME = "WebDriverShutdownGroup";
   private static final ThreadGroup WEBDRIVER_SHUTDOWN_GROUP = new ThreadGroup(SHUTDOWN_GROUP_NAME);
@@ -52,6 +62,7 @@ public abstract class AbstractWebDriverProvider implements WebDriverProvider {
    * @throws WebDriverInstantiationException
    */
   @Nonnull
+  @CheckReturnValue
   protected abstract WebDriver instantiateDriver();
 
   @Override
@@ -63,6 +74,7 @@ public abstract class AbstractWebDriverProvider implements WebDriverProvider {
     return WEB_DRIVER_INFORMATION_THREAD_LOCAL.get().getDriver();
   }
 
+  @CheckReturnValue
   @Override
   public boolean isStarted() {
     return WEB_DRIVER_INFORMATION_THREAD_LOCAL.get() != null;
@@ -105,24 +117,54 @@ public abstract class AbstractWebDriverProvider implements WebDriverProvider {
     }
   }
 
-  protected WebDriverInformation createWebDriverInformation(final WebDriver driver, final Thread hook) {
+  /**
+   * <p>
+   * Creates an WebDriverInformation object which will provide all necessary information to keep control
+   * of the started WebDriver instance.
+   * </p>
+   *
+   * @param driver WebDriver instance which just got started
+   * @param hook   Shutdown Hook registered to automatically quit WebDriver instance on JVM shutdown
+   * @return information object
+   */
+  @Nonnull
+  @CheckReturnValue
+  protected WebDriverInformation createWebDriverInformation(@Nonnull final WebDriver driver,
+                                                            @Nonnull final Thread hook) {
     return new WebDriverInformationImpl(driver, hook);
   }
 
-  protected Runnable createQuitWebDriverRunnable(final WebDriver driver) {
+  /**
+   * Create runnable to quit the WebDriver instance at shutdown (and when enforced via {@link #quit()}.
+   *
+   * @param driver WebDriver instance to quit on shutdown
+   * @return runnable
+   */
+  @Nonnull
+  @CheckReturnValue
+  protected Runnable createQuitWebDriverRunnable(@Nonnull final WebDriver driver) {
     return new QuitWebDriverRunnable(driver);
   }
 
+  /**
+   * Augments the WebDriver instance directly after creation. By default
+   * {@link #DEFAULT_AUGMENTER} will be used.
+   *
+   * @param driver WebDriver instance to augment
+   * @return augmented WebDriver instance
+   */
   protected WebDriver augment(final WebDriver driver) {
     return DEFAULT_AUGMENTER.augment(driver);
   }
 
+  /**
+   * WebDriver instance will be started, augmented and registered for quit on shutdown.
+   */
   private void startWebDriver() {
     final WebDriver driver = augment(instantiateDriver());
     final Thread hook = new Thread(WEBDRIVER_SHUTDOWN_GROUP, createQuitWebDriverRunnable(driver));
     getRuntime().addShutdownHook(hook);
     WEB_DRIVER_INFORMATION_THREAD_LOCAL.set(createWebDriverInformation(driver, hook));
   }
-
 
 }
