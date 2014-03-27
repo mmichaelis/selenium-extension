@@ -37,6 +37,10 @@
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-server</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.github.mmichaelis</groupId>
+      <artifactId>selenium-extension-common</artifactId>
+    </dependency>
   </dependencies>
 
 
