@@ -28,6 +28,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URL;
@@ -213,6 +214,7 @@ public class AbstractWebDriverProviderTest {
       this.testedDriverIterator = asList(testedDriver).iterator();
     }
 
+    @CheckReturnValue
     @Nonnull
     @Override
     protected WebDriver instantiateDriver() {
