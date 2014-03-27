@@ -19,17 +19,30 @@ package io.github.mmichaelis.selenium.client.provider;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * General exception for problems providing WebDriver instances.
+ * </p>
  *
  * @since 2014-03-21.
  */
 public class WebDriverProviderException extends RuntimeException {
   private static final long serialVersionUID = -3556649446315503014L;
 
+  /**
+   * Exception with a message.
+   *
+   * @param message exception message
+   */
   public WebDriverProviderException(@Nullable final String message) {
     super(message);
   }
 
+  /**
+   * Exception with message and cause.
+   *
+   * @param message exception message
+   * @param cause   exception's cause
+   */
   public WebDriverProviderException(@Nullable final String message, @Nullable final Throwable cause) {
     super(message, cause);
   }
