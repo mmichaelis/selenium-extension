@@ -16,13 +16,14 @@
 
 package io.github.mmichaelis.selenium.server.inmemory;
 
+import io.github.mmichaelis.selenium.common.internal.NetUtils;
 import org.openqa.selenium.server.RemoteControlConfiguration;
 import org.openqa.selenium.server.SeleniumServer;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.ServerSocket;
 import java.net.URI;
 import java.net.URL;
 
@@ -33,6 +34,13 @@ import java.net.URL;
  */
 public class DefaultInMemorySeleniumServer implements InMemorySeleniumServer {
   private SeleniumServer seleniumServer;
+
+  @Override
+  @Nullable
+  @CheckReturnValue
+  public SeleniumServer getSeleniumServer() {
+    return seleniumServer;
+  }
 
   @Override
   public void start() {
@@ -84,20 +92,15 @@ public class DefaultInMemorySeleniumServer implements InMemorySeleniumServer {
   }
 
   private RemoteControlConfiguration getConfiguration() {
-    final int port = getFreePort();
-    final RemoteControlConfiguration configuration = new RemoteControlConfiguration();
-    configuration.setPort(port);
-    return configuration;
-  }
-
-  private int getFreePort() {
     final int port;
-    try (ServerSocket s = new ServerSocket(0)) {
-      port = s.getLocalPort();
+    try {
+      port = NetUtils.getFreePort();
     } catch (final IOException e) {
       throw new InMemorySeleniumServerException("Unable to determine free port.", e);
     }
-    return port;
+    final RemoteControlConfiguration configuration = new RemoteControlConfiguration();
+    configuration.setPort(port);
+    return configuration;
   }
 
 }

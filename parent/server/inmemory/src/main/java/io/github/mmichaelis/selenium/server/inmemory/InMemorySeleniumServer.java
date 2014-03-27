@@ -16,6 +16,9 @@
 
 package io.github.mmichaelis.selenium.server.inmemory;
 
+import org.openqa.selenium.server.SeleniumServer;
+
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nullable;
 import java.net.URL;
 
@@ -27,6 +30,15 @@ import java.net.URL;
  * @since 2014-03-23.
  */
 public interface InMemorySeleniumServer {
+  /**
+   * Access to the in memory Selenium Server.
+   *
+   * @return Selenium Server or {@code null} if not yet started
+   */
+  @Nullable
+  @CheckReturnValue
+  SeleniumServer getSeleniumServer();
+
   /**
    * <p>
    * Starts the In-Memory-Selenium-Server. If called multiple times the server just keeps started.
