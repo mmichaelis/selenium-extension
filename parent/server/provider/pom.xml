@@ -25,13 +25,16 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>selenium-extension-server-inmemory</artifactId>
-  <name>inmemory</name>
+  <artifactId>selenium-extension-server-provider</artifactId>
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -42,6 +45,5 @@
       <artifactId>selenium-extension-common</artifactId>
     </dependency>
   </dependencies>
-
 
 </project>

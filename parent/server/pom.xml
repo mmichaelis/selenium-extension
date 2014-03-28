@@ -30,7 +30,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>junit</module>
-    <module>inmemory</module>
+    <module>provider</module>
   </modules>
 
 

@@ -22,15 +22,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="provider" />
         <module name="selenium-extension-client-annotation" />
         <module name="selenium-extension-client-junit" />
         <module name="selenium-extension-client-provider" />
         <module name="selenium-extension-common" />
-        <module name="selenium-extension-server-inmemory" />
         <module name="selenium-extension-server-junit" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="provider" target="1.7" />
       <module name="selenium-extension" target="1.7" />
       <module name="selenium-extension-client" target="1.7" />
       <module name="selenium-extension-client-annotation" target="1.7" />

@@ -89,7 +89,7 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>selenium-extension-server-inmemory</artifactId>
+        <artifactId>selenium-extension-server-provider</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

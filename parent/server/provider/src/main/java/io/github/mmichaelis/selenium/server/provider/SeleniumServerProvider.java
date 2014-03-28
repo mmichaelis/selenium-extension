@@ -14,52 +14,54 @@
  * limitations under the License.
  */
 
-package io.github.mmichaelis.selenium.server.inmemory;
+package io.github.mmichaelis.selenium.server.provider;
 
 import org.openqa.selenium.server.SeleniumServer;
 
 import javax.annotation.CheckReturnValue;
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 import java.net.URL;
 
 /**
- * <p>
- * Controls an In-Memory-Selenium-Server started at any free port.
- * </p>
+ * Provides one Selenium Server per Thread. If started the Selenium Server will be automatically registered
+ * for shutdown via shutdown hook.
  *
- * @since 2014-03-23.
+ * @since 2014-03-28.
  */
-public interface InMemorySeleniumServer {
+public interface SeleniumServerProvider {
   /**
-   * Access to the in memory Selenium Server.
+   * Access to the Selenium Server.
    *
-   * @return Selenium Server or {@code null} if not yet started
+   * @return Selenium Server instance; will be started if not yet done
+   * @throws SeleniumServerProviderException if starting server fails
    */
-  @Nullable
+  @Nonnull
   @CheckReturnValue
-  SeleniumServer getSeleniumServer();
+  SeleniumServer get();
 
   /**
    * <p>
-   * Starts the In-Memory-Selenium-Server. If called multiple times the server just keeps started.
+   * If not yet started, starts the Selenium Server.
    * </p>
    *
-   * @throws InMemorySeleniumServerException if starting the Selenium Server fails
+   * @throws SeleniumServerProviderException if starting server fails
    */
   void start();
 
   /**
    * <p>
-   * Stops the In-Memory-Selenium-Server. If already stopped nothing will happen.
+   * Stops the Selenium Server. If already stopped nothing will happen.
+   * As server is registered for shutdown per shutdown hook it does not need to be explicitly called.
    * </p>
    */
   void stop();
 
   /**
-   * Indicate if the In-Memory-Server is started.
+   * Indicate if the Selenium Server is started.
    *
    * @return {@code true} if it is started, {@code false} if not
    */
+  @CheckReturnValue
   boolean isStarted();
 
   /**
@@ -67,8 +69,10 @@ public interface InMemorySeleniumServer {
    * Retrieve the Selenium Server URL to contact for RemoteWebDriver.
    * </p>
    *
-   * @return URL of Selenium Server or {@code null} if Selenium Server is not started
+   * @return URL of Selenium Server
+   * @throws SeleniumServerProviderException if server is not started
    */
-  @Nullable
+  @Nonnull
+  @CheckReturnValue
   URL getUrl();
 }

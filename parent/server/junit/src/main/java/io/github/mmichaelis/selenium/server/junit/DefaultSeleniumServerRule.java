@@ -16,11 +16,11 @@
 
 package io.github.mmichaelis.selenium.server.junit;
 
-import io.github.mmichaelis.selenium.server.inmemory.DefaultInMemorySeleniumServer;
-import io.github.mmichaelis.selenium.server.inmemory.InMemorySeleniumServer;
+import io.github.mmichaelis.selenium.server.provider.DefaultSeleniumServerProvider;
+import io.github.mmichaelis.selenium.server.provider.SeleniumServerProvider;
 import org.junit.rules.ExternalResource;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 import java.net.URL;
 
 /**
@@ -29,29 +29,23 @@ import java.net.URL;
  * @since 2014-03-23.
  */
 public final class DefaultSeleniumServerRule extends ExternalResource implements SeleniumServerRule {
-  private InMemorySeleniumServer seleniumServer;
+  private final SeleniumServerProvider serverProvider = new DefaultSeleniumServerProvider();
 
   @Override
   protected void before() {
-    if (seleniumServer == null) {
-      seleniumServer = new DefaultInMemorySeleniumServer();
-    }
-    seleniumServer.start();
+    serverProvider.start();
   }
 
   @Override
   protected void after() {
-    if (seleniumServer != null) {
-      seleniumServer.stop();
-    }
+    // DevNote: Not stopping for now. Could stop here, if test class for example indicates that it requires
+    // a server restart.
+    // serverProvider.stop();
   }
 
   @Override
-  @Nullable
+  @Nonnull
   public URL getUrl() {
-    if (seleniumServer != null) {
-      return seleniumServer.getUrl();
-    }
-    return null;
+    return serverProvider.getUrl();
   }
 }

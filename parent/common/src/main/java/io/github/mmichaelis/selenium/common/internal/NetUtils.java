@@ -20,13 +20,24 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 /**
+ * A utility providing some Net functions.
+ *
  * @since 2014-03-27.
  */
 public final class NetUtils {
 
+  /**
+   * Utility class, don't instantiate.
+   */
   private NetUtils() {
   }
 
+  /**
+   * Retrieve a free port.
+   *
+   * @return some free port
+   * @throws IOException if no free port could be retrieved
+   */
   public static int getFreePort() throws IOException {
     final int port;
     try (ServerSocket s = new ServerSocket(0)) {

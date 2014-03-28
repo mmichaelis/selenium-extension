@@ -14,23 +14,11 @@
  * limitations under the License.
  */
 
-package io.github.mmichaelis.selenium.server.inmemory;
-
 /**
- * Exceptions when controlling the In-Memory-Selenium-Server.
- *
- * @since 2014-03-23.
+ * <p>
+ * Classes to provide an in-memory Selenium Server. Mind that the server has restricted use and is most likely only
+ * usable with browsers installed to their default paths.
+ * </p>
+ * @since 2014-03-28.
  */
-public class InMemorySeleniumServerException extends RuntimeException {
-  private static final long serialVersionUID = -3365322010168491405L;
-
-  /**
-   * Constructor with message and cause.
-   *
-   * @param message message providing debugging hints
-   * @param cause   cause for this exception
-   */
-  public InMemorySeleniumServerException(final String message, final Throwable cause) {
-    super(message, cause);
-  }
-}
+package io.github.mmichaelis.selenium.server.provider;

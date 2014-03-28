@@ -38,6 +38,7 @@ public enum PreconditionMessage {
     this.message = message;
   }
 
+
   public final String format(final String... arguments) {
     return String.format(message, arguments);
   }

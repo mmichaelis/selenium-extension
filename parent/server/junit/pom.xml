@@ -33,15 +33,14 @@
       <artifactId>junit</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.mmichaelis</groupId>
-      <artifactId>selenium-extension-server-inmemory</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>
       <scope>provided</scope>
     </dependency>
-
+    <dependency>
+      <groupId>io.github.mmichaelis</groupId>
+      <artifactId>selenium-extension-server-provider</artifactId>
+    </dependency>
   </dependencies>
 
 

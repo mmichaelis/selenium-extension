@@ -18,7 +18,7 @@ package io.github.mmichaelis.selenium.server.junit;
 
 import org.junit.rules.TestRule;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 import java.net.URL;
 
 /**
@@ -30,6 +30,6 @@ import java.net.URL;
  * @since 2014-03-23.
  */
 public interface SeleniumServerRule extends TestRule {
-  @Nullable
+  @Nonnull
   URL getUrl();
 }

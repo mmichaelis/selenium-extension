@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/provider/provider.iml" filepath="$PROJECT_DIR$/provider/provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/selenium-extension.iml" filepath="$PROJECT_DIR$/selenium-extension.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/client/selenium-extension-client.iml" filepath="$PROJECT_DIR$/parent/client/selenium-extension-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/client/annotation/selenium-extension-client-annotation.iml" filepath="$PROJECT_DIR$/parent/client/annotation/selenium-extension-client-annotation.iml" />
@@ -10,7 +11,6 @@
       <module fileurl="file://$PROJECT_DIR$/parent/common/selenium-extension-common.iml" filepath="$PROJECT_DIR$/parent/common/selenium-extension-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/selenium-extension-parent.iml" filepath="$PROJECT_DIR$/parent/selenium-extension-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/server/selenium-extension-server.iml" filepath="$PROJECT_DIR$/parent/server/selenium-extension-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/parent/server/inmemory/selenium-extension-server-inmemory.iml" filepath="$PROJECT_DIR$/parent/server/inmemory/selenium-extension-server-inmemory.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/server/junit/selenium-extension-server-junit.iml" filepath="$PROJECT_DIR$/parent/server/junit/selenium-extension-server-junit.iml" />
     </modules>
   </component>
