@@ -25,28 +25,29 @@ import static com.google.common.base.Objects.toStringHelper;
  *
  * @since 2014-03-21.
  */
-public enum PreconditionMessage {
+public enum PreconditionMessage implements PreconditionMessageInterface {
   /**
    * Message that an object must not be null. Required one additional format-argument describing the variable
    * which holds the object.
    */
   MUST_NOT_BE_NULL("%s must not be null.");
 
-  private final String message;
+  private final String messagePattern;
 
-  PreconditionMessage(final String message) {
-    this.message = message;
+  PreconditionMessage(final String messagePattern) {
+    this.messagePattern = messagePattern;
   }
 
 
+  @Override
   public final String format(final String... arguments) {
-    return String.format(message, arguments);
+    return String.format(messagePattern, (Object) arguments);
   }
 
   @Override
   public String toString() {
     return toStringHelper(this)
-            .add("message", message)
+            .add("messagePattern", messagePattern)
             .toString();
   }
 }
