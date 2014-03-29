@@ -37,6 +37,7 @@ import java.util.concurrent.Future;
 import static java.lang.String.format;
 import static java.util.concurrent.Executors.newCachedThreadPool;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.remote.DesiredCapabilities.htmlUnit;
 
 /**
@@ -62,6 +63,20 @@ public class RemoteWebDriverProviderTest {
     errorCollector.checkThat("Requested browser type should have been provided.",
             remoteWebDriver.getCapabilities().getBrowserName(),
             equalTo(desiredCapabilities.getBrowserName()));
+  }
+
+  @Test
+  public void validate_to_string() throws Exception {
+    final DesiredCapabilities desiredCapabilities = htmlUnit();
+    final WebDriverProvider provider =
+            new RemoteWebDriverProvider(SERVER_RULE.getUrl(), desiredCapabilities);
+    assertThat(provider, hasToString(
+            allOf(
+                    containsString(RemoteWebDriverProvider.class.getSimpleName()),
+                    containsString(SERVER_RULE.getUrl().toExternalForm()),
+                    containsString(desiredCapabilities.toString())
+            )
+    ));
   }
 
   @Test
