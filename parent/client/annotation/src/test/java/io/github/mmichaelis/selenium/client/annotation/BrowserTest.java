@@ -21,6 +21,7 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.openqa.selenium.Platform;
 
+import static java.lang.String.format;
 import static org.hamcrest.Matchers.array;
 import static org.hamcrest.Matchers.arrayContainingInAnyOrder;
 import static org.junit.Assert.assertThat;
@@ -52,6 +53,7 @@ public class BrowserTest {
             new BrowserEquals(IE, ANY, "")));
   }
 
+  @SuppressWarnings("UnusedDeclaration")
   @BrowserExclude(@Browser(value = "", platform = UNIX, message = UNIX_NOT_SUPPORTED))
   @BrowserInclude({
           @Browser(FIREFOX),
@@ -77,7 +79,7 @@ public class BrowserTest {
     private final String expectedMessage;
 
     public BrowserEquals(final String expectedValue, final Platform expectedPlatform, final String expectedMessage) {
-      super(String.format("Browser tag matches value: %s, platform: %s, message: %s", expectedValue, expectedPlatform, expectedMessage));
+      super(format("Browser tag matches value: %s, platform: %s, message: %s", expectedValue, expectedPlatform, expectedMessage));
       this.expectedValue = expectedValue;
       this.expectedPlatform = expectedPlatform;
       this.expectedMessage = expectedMessage;
